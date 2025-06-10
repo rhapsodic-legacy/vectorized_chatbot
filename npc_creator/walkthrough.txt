@@ -1,0 +1,243 @@
+# Bloodhound Mission NPC Chatbot Documentation
+
+## Project Overview
+
+This project is a **proof of concept** for a lightweight Non-Player Character (NPC) chatbot designed for Role-Playing Games (RPGs). It integrates Python, HTML, 3D animation via Three.js, ngrok, and Google's Gemini Flash 1.5 AI model to create an interactive NPC named "Lieutenant" with a mission objective system, memory system, and a sci-fi 3D avatar.
+
+The NPC, "Lieutenant," is a gruff cyberpunk military commander from 2087, guiding the user through a stealth mission to capture Dr. Eva from Titanium Towers. The app runs on Google Colab, using Flask as the backend, SQLite for persistent memory, and ngrok to provide public access.
+
+---
+
+## Key Features
+
+### 🎯 Mission Objective System
+- **12-step mission** provides the NPC with clear purpose
+- Guides users through objectives like breaking into Titanium Towers and capturing Dr. Eva
+- Advances based on user keywords and progress
+
+### 🧠 Memory System
+- **SQLite database** (`bloodhound_mission.db`) stores:
+  - User data and profiles
+  - Mission progress tracking
+  - Complete chat history
+  - User statistics
+- Ensures continuity across sessions
+
+### 🤖 AI-Powered Responses
+- **Gemini Flash 1.5** generates context-aware, gruff responses
+- Aligned with mission objectives and user sentiment
+- Fallback to gemini-pro if needed
+
+### 🎨 3D Avatar
+- Cyberpunk-themed humanoid avatar
+- Animated with Three.js
+- Features glowing effects and idle animations
+- Enhances immersion
+
+### 📊 Sentiment Analysis
+- **NLTK's VADER** analyzes user message sentiment
+- Informs NPC response generation
+- Adapts to user emotional state
+
+### 🌐 Public Access
+- **Ngrok** exposes local Flask server
+- Makes chatbot accessible online from Google Colab
+
+---
+
+## Purpose
+
+This project demonstrates a lightweight NPC for RPGs that combines web technologies and AI. Unlike typical role-playing AI chatbots that respond aimlessly, this NPC uses a **mission objective system** to maintain focus and purpose. The memory system ensures persistent interactions, making it a functional RPG companion even within Google Colab's constraints.
+
+---
+
+## Hardware Constraints
+
+Designed specifically for **Google Colab** with limited computational resources:
+
+- **SQLite Database**: Lightweight, persistent storage
+- **Gemini Flash 1.5**: Chosen for efficiency (local LLM possible with better hardware)
+- **Ngrok**: Enables public access despite Colab's local-only environment
+- **Session Persistence**: Maintains data across ngrok restarts if .db file is retained
+
+---
+
+## Technical Implementation
+
+### Dependencies Installation
+```python
+!pip install flask pyngrok google-generativeai nltk
+```
+
+### Database Schema
+**File**: `bloodhound_mission.db`
+
+**Tables**:
+- `users`: User ID, name, creation timestamp, last active
+- `mission_progress`: Current objective, completed objectives, items, mission data
+- `chat_history`: Messages, responses, sentiment scores, objectives
+- `mission_stats`: Total messages, objectives completed, missions started/completed
+
+### Core Functions
+
+#### User Management
+```python
+get_or_create_user(name)     # Retrieves or creates user with initial progress
+load_user_data(user_id)      # Loads mission progress from database
+save_user_data(user_id, data) # Saves updated mission progress
+save_chat_interaction(...)    # Logs interactions and updates stats
+get_user_stats(user_id)      # Retrieves user statistics
+```
+
+#### Database Initialization
+```python
+init_database()  # Creates all tables if they don't exist
+```
+
+### AI Configuration
+- **Primary**: Gemini Flash 1.5 with user-provided API key
+- **Fallback**: gemini-pro if primary fails
+- **Testing**: `test_api()` verifies connection
+
+### API Endpoints
+- `GET /api/user/<username>`: Returns mission progress and stats
+- `POST /chat`: Processes messages, generates responses, updates memory/stats
+
+### Frontend Components
+- **Chat Window**: Displays user and NPC message history
+- **3D Avatar**: Cyberpunk humanoid with Three.js animations
+- **Mission Status**: Shows completed, current, and pending objectives
+- **Stats Panel**: Displays user statistics and progress
+
+---
+
+## Mission Objective System
+
+### The 12-Step Mission
+1. Break into Titanium Towers via West Tower basement subway entrance
+2. Get past basement guards and access elevator shaft
+3. Climb interior ladder to 110th floor and exit shaft
+4. Cross bridge from West Tower to East Tower
+5. Stealthily reach 121st floor penthouse in East Tower
+6. Locate and capture Dr. Eva from celebration party
+7. Return to West Tower with Dr. Eva
+8. Get Dr. Eva to basement and onto pickup rail car
+9. Stay on rail car until rendezvous point
+10. Meet pickup team at rendezvous for extraction
+11. Lead pursuit out of the city
+12. Shake all pursuit and head to headquarters
+
+### How It Works
+- **Tracking**: Stored in `mission_progress` table (current objective, completed list)
+- **Progression**: Advances on user keywords (e.g., "next", "done")
+- **AI Integration**: Current objective and history inform AI responses
+- **Purpose**: Ensures NPC maintains focus, unlike aimless chatbots
+
+---
+
+## Memory System Details
+
+### Storage Components
+- **SQLite Database**: Lightweight, persistent storage solution
+- **Mission Progress**: Current state, completed objectives, user items
+- **Chat History**: Complete conversation logs with sentiment analysis
+- **User Stats**: Comprehensive activity tracking
+
+### Persistence Features
+- Functional across ngrok restarts (if .db file retained)
+- Maintains context for enhanced immersion
+- Vectorizes NPC personality through historical interactions
+
+---
+
+## Deployment Architecture
+
+### Server Setup
+```python
+# Flask runs on thread at 0.0.0.0:5000
+# Ngrok exposes app publicly after Flask starts
+# Main loop keeps server running until interrupted
+```
+
+### Key Components
+- **Backend**: Python Flask server
+- **Database**: SQLite for persistence
+- **AI**: Google Gemini Flash 1.5
+- **Frontend**: HTML/CSS/JavaScript with Three.js
+- **Tunneling**: Ngrok for public access
+- **Platform**: Google Colab
+
+---
+
+## Future Development Directions
+
+### 🔧 Enhanced Memory System
+- Add comprehensive inventory tracking (items, names, places, experiences)
+- Implement quick access system to avoid searching extensive chat logs
+- Optimize for long campaign sessions
+
+### 🎭 Programmable Personality
+- Define specific traits (e.g., prefers stealth over combat)
+- Use LLM knowledge for consistent, situational responses
+- Create personality templates for different NPC types
+
+### 👥 Multiple NPC Support
+- Support multiple NPCs with unique personalities and objectives
+- Enable NPC-to-NPC interactions
+- Create rich, diverse RPG experiences
+
+### 🎬 Dynamic Avatar Animations
+- Link animations to conversation context
+- Implement contextual reactions (walking, sneaking, fighting stances)
+- Increase engagement with lifelike behavior
+
+### 🚀 Advanced Features
+- Voice synthesis for spoken dialogue
+- Advanced emotion modeling
+- Procedural quest generation
+- Integration with existing RPG platforms
+
+---
+
+## Installation & Setup Guide
+
+### Prerequisites
+- Google Colab account
+- Google Gemini API key
+- Basic understanding of Python/Flask
+
+### Quick Start
+1. Open Google Colab
+2. Install dependencies: `!pip install flask pyngrok google-generativeai nltk`
+3. Set up Gemini API key
+4. Initialize database with `init_database()`
+5. Run Flask server
+6. Start ngrok tunnel
+7. Access via provided ngrok URL
+
+### Configuration
+- Modify mission objectives in mission system
+- Customize NPC personality in AI prompts
+- Adjust 3D avatar appearance in Three.js code
+- Configure sentiment analysis parameters
+
+---
+
+## Conclusion
+
+This capstone project successfully demonstrates a lightweight NPC system for RPGs, combining modern web technologies with AI capabilities. The mission objective and memory systems provide Lieutenant with focused purpose and persistent context, all optimized for Google Colab's constraints.
+
+The project showcases the potential of combining Python backends, web frontends, 3D graphics, and AI to create engaging game experiences. With the outlined future enhancements, this proof of concept could evolve into a robust RPG companion system, demonstrating innovative approaches to game design and AI integration.
+
+---
+
+## Technical Specifications
+
+- **Platform**: Google Colab
+- **Backend**: Python Flask
+- **Database**: SQLite
+- **AI Model**: Google Gemini Flash 1.5
+- **3D Graphics**: Three.js
+- **Tunneling**: Ngrok
+- **Sentiment Analysis**: NLTK VADER
+- **Frontend**: HTML5/CSS3/JavaScript
