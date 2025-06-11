@@ -1,4 +1,4 @@
-# NPC_Creator
+# vectorized_chatbot
 
 **NPC_Creator** is an AI-powered Non-Player Character (NPC) chatbot designed for Role-Playing Games (RPGs). Its purpose is to deliver an immersive, mission-driven experience where users interact with a gruff cyberpunk military commander named "Lieutenant" through a chat interface, accompanied by a sci-fi 3D avatar. The NPC guides users through a 12-step stealth mission, leveraging a robust mission objective system and persistent memory for continuity.
 
