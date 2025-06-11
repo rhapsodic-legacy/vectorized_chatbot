@@ -1,8 +1,10 @@
-# Bloodhound Mission NPC Chatbot Documentation
+# Vectorized Chatbot Documentation
 
 ## Project Overview
 
-This project is a **proof of concept** for a lightweight Non-Player Character (NPC) chatbot designed for Role-Playing Games (RPGs). It integrates Python, HTML, 3D animation via Three.js, ngrok, and Google's Gemini Flash 1.5 AI model to create an interactive NPC named "Lieutenant" with a mission objective system, memory system, and a sci-fi 3D avatar.
+This project is a **proof of concept** for a lightweight chatbot with a vectorized, goal-oriented personality. It integrates Python, HTML, 3D animation via Three.js, ngrok, and Google's Gemini Flash 1.5 AI model to create an interactive NPC named "Lieutenant" with a mission objective system, memory system, and a sci-fi 3D avatar.
+
+## Bloodhound Mission NPC Chatbot
 
 The NPC, "Lieutenant," is a gruff cyberpunk military commander from 2087, guiding the user through a stealth mission to capture Dr. Eva from Titanium Towers. The app runs on Google Colab, using Flask as the backend, SQLite for persistent memory, and ngrok to provide public access.
 
@@ -47,11 +49,11 @@ The NPC, "Lieutenant," is a gruff cyberpunk military commander from 2087, guidin
 
 ## Purpose
 
-This project demonstrates a lightweight NPC for RPGs that combines web technologies and AI. Unlike typical role-playing AI chatbots that respond aimlessly, this NPC uses a **mission objective system** to maintain focus and purpose. The memory system ensures persistent interactions, making it a functional RPG companion even within Google Colab's constraints.
+This proof of concept demonstrates a lightweight NPC for RPGs that combines web technologies and AI. Unlike typical role-playing AI chatbots that respond without clear purpose, this NPC uses a **mission objective system** to maintain focus and purpose. The memory system ensures persistent interactions, making it a functional RPG companion even within Google Colab's constraints.
 
 ---
 
-## Hardware Constraints
+## Hardware Considerations
 
 Designed specifically for **Google Colab** with limited computational resources:
 
@@ -225,9 +227,9 @@ init_database()  # Creates all tables if they don't exist
 
 ## Conclusion
 
-This capstone project successfully demonstrates a lightweight NPC system for RPGs, combining modern web technologies with AI capabilities. The mission objective and memory systems provide Lieutenant with focused purpose and persistent context, all optimized for Google Colab's constraints.
+This capstone project successfully demonstrates a proof of concept chatbot with a vectorized personality in the form of a lightweight NPC system for experiences such as RPGs, combining modern web technologies with AI capabilities. The mission objective and memory systems provide Lieutenant with focused purpose and persistent context, all optimized for Google Colab's constraints.
 
-The project showcases the potential of combining Python backends, web frontends, 3D graphics, and AI to create engaging game experiences. With the outlined future enhancements, this proof of concept could evolve into a robust RPG companion system, demonstrating innovative approaches to game design and AI integration.
+The project showcases the potential of combining Python backends, web frontends, 3D graphics, and AI to create engaging game experiences. With the outlined future enhancements, this proof of concept could evolve into a relatively robust RPG companion system, demonstrating innovative approaches to game design and AI integration.
 
 ---
 
