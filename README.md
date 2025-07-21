@@ -20,7 +20,7 @@ The repository includes the following:
 - **`npc_creator/`**  
   - `npc_creator.ipynb`: The main program file, a Google Colab notebook containing all the code to run the NPC chatbot.  
   - `walkthrough.txt`: Documentation detailing the project’s components, functionality, and potential future enhancements.
-
+ 
 ---
 
 ## How to Use
