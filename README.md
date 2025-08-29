@@ -11,7 +11,7 @@ This project harnesses the following technologies:
 - **ngrok**: Provides public access to the locally hosted Flask app.     
 - **Google Colab**: Environment for running the project.  
       
---- 
+---  
     
 ## Contents  
      
