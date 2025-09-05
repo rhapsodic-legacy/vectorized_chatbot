@@ -9,7 +9,7 @@ This project harnesses the following technologies:
 - **SQLite**: Stores the NPC’s memory.     
 - **Google's Gemini Flash 1.5**: Powers the AI-driven dialogue.  
 - **ngrok**: Provides public access to the locally hosted Flask app.        
-- **Google Colab**: Environment for running the project.      
+- **Google Colab**: Environment for running the project.       
       
 ---     
     
