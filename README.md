@@ -14,7 +14,7 @@ This project harnesses the following technologies:
 ---     
     
 ## Contents  
-     
+      
 The repository includes the following:      
   
 - **`npc_creator/`**  
