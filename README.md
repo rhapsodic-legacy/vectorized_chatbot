@@ -12,7 +12,7 @@ This project harnesses the following technologies:
 - **Google Colab**: Environment for running the project.             
          
 ---          
-          
+           
 ## Contents        
         
 The repository includes the following:        
