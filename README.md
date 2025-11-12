@@ -13,7 +13,7 @@ This project harnesses the following technologies:
            
 ---            
              
-## Contents         
+## Contents          
           
 The repository includes the following:         
    
